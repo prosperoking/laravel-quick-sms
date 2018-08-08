@@ -16,8 +16,8 @@ class QuickSMSServiceProvider extends ServiceProvider
     public function register()
     {
         $this->mergeConfigFrom(__DIR__ . "/config/QuickSMS.php",'QuickSMS.php');
-        $this->app->singleton(QuickSMS::class,function($app){
-            return new QuickSMS(config('QuickSMS'));
+        $this->app->singleton(QuickSMSServiceProvider::class,function($app){
+            return new QuickSMSServiceProvider(config('QuickSMS'));
         });
     }
 }

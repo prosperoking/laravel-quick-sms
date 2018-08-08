@@ -28,10 +28,10 @@
     "extra": {
         "laravel": {
             "providers": [
-                "Prosperoking\\LaravelQuickSms\\ServiceProvider"
+                "Prosperoking\\LaravelQuickSms\\QuickSMSServiceProvider"
             ],
             "aliases": {
-                "QuickSMS": "Prosperoking\\QuickSMS\\Facades\\Facade"
+                "QuickSMS": "Prosperoking\\LaravelQuickSms\\Facades\\Facade"
             }
         }
     }

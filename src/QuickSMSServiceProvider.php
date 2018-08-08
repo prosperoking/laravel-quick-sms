@@ -5,7 +5,7 @@ namespace Prosperoking\LaravelQuickSMS;
 use Prosperoking\LaravelQuickSMS\Drivers\BaseDriver;
 use Prosperoking\LaravelQuickSMS\Traits\HasDriver;
 
-class QuickSMS {
+class QuickSMSServiceProvider {
     use HasDriver;
     /**
      * @var BaseDriver $messenger
