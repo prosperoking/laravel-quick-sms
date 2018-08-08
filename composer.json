@@ -2,7 +2,7 @@
     "name": "prosperoking/laravel-quick-sms",
     "description": "A simple quicksms sender for Laravel",
     "type": "library",
-    "version":"0.2",
+    "version":"0.2.1",
     "keywords": [
         "laravel",
         "smslive247",

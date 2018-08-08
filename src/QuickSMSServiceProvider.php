@@ -2,34 +2,22 @@
 
 namespace Prosperoking\LaravelQuickSMS;
 
-use Prosperoking\LaravelQuickSMS\Drivers\BaseDriver;
-use Prosperoking\LaravelQuickSMS\Traits\HasDriver;
+use Illuminate\Support\ServiceProvider;
 
-class QuickSMSServiceProvider {
-    use HasDriver;
-    /**
-     * @var BaseDriver $messenger
-     */
-    private $messenger;
-
-    public function __construct(array $config)
+class QuickSMSServiceProvider extends ServiceProvider
+{
+    public function boot()
     {
-        $provider = $config['default'];
-        $this->messenger = $this->loadDriver($provider,$config['providers'][$provider]);
+        $this->publishes([
+            __DIR__."/config/QuickSMS.php"=>config_path('QuickSMS.php')
+        ]);
     }
 
-    /**
-     * <p>Sends QuickSMS
-     * </p>
-     * @param array $number
-     * @param $message
-     * @param null $sender
-     * @return array|mixed
-     * @throws \GuzzleHttp\Exception\GuzzleException
-     */
-    public function sendSms(array $number,$message,$sender=null)
+    public function register()
     {
-        return $this->messenger->sendSms($number,$message,$sender);
+        $this->mergeConfigFrom(__DIR__ . "/config/QuickSMS.php",'QuickSMS.php');
+        $this->app->singleton(QuickSMSServiceProvider::class,function($app){
+            return new QuickSMSServiceProvider(config('QuickSMS'));
+        });
     }
-
 }
