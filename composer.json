@@ -32,7 +32,7 @@
                 "Prosperoking\\LaravelQuickSms\\QuickSMSServiceProvider"
             ],
             "aliases": {
-                "QuickSMS": "Prosperoking\\LaravelQuickSms\\Facades\\Facade"
+                "QuickSMS": "Prosperoking\\LaravelQuickSms\\Facades\\QuickSMSFacade"
             }
         }
     }
