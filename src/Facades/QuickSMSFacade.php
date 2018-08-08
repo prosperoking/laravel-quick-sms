@@ -1,6 +1,6 @@
 <?php
 
-namespace Prosperoking\LaravelQuickSMS;
+namespace Prosperoking\LaravelQuickSMS\Facades;
 
 use Illuminate\Support\Facades\Facade;
 
