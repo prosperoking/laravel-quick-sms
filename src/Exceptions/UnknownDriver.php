@@ -1,5 +1,5 @@
 <?php
-namespace Prosperoking\QuickSMS\Exceptions;
+namespace Prosperoking\LaravelQuickSMS\Exceptions;
 
 
 class UnknownDriver extends DefaultException

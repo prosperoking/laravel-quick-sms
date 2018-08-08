@@ -1,15 +1,15 @@
 <?php
 /**
  * Created by PhpStorm.
- * User: prosperoking
- * Date: 8/7/18
- * Time: 3:31 PM
+ * User: ProsperoKing
+ * Date: 08-Aug-18
+ * Time: 1:36 AM
  */
 
 namespace Prosperoking\LaravelQuickSMS\Exceptions;
 
 
-class InvalidConfiguration
+class UnknownSenderId
 {
 
 }

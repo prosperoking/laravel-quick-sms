@@ -6,7 +6,7 @@
  * Time: 12:54 PM
  */
 
-namespace Prosperoking\QuickSMS\Traits;
+namespace Prosperoking\LaravelQuickSMS\Traits;
 
 use GuzzleHttp\Client as HTTPClient;
 

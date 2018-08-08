@@ -1,12 +1,15 @@
 <?php
 
-namespace Prosperoking\QuickSMS;
+namespace Prosperoking\LaravelQuickSMS;
 
-use Prosperoking\QuickSMS\Traits\HasDriver;
+use Prosperoking\LaravelQuickSMS\Drivers\BaseDriver;
+use Prosperoking\LaravelQuickSMS\Traits\HasDriver;
 
 class QuickSMS {
     use HasDriver;
-
+    /**
+     * @var BaseDriver $messenger
+     */
     private $messenger;
 
     public function __construct(array $config)
@@ -15,14 +18,18 @@ class QuickSMS {
         $this->messenger = $this->loadDriver($provider,$config['providers'][$provider]);
     }
 
-    public function sendSms(string $string, string $phone)
+    /**
+     * <p>Sends QuickSMS
+     * </p>
+     * @param array $number
+     * @param $message
+     * @param null $sender
+     * @return array|mixed
+     * @throws \GuzzleHttp\Exception\GuzzleException
+     */
+    public function sendSms(array $number,$message,$sender=null)
     {
-        return $this->messenger->sendSms($string,$phone);
-    }
-
-    public function sendQuickSms()
-    {
-        return $this->messenger->sendQuickSms($string, $phone);
+        return $this->messenger->sendSms($number,$message,$sender);
     }
 
 }

@@ -1,6 +1,6 @@
 <?php
 
-namespace Prosperoking\QuickSMS\Exceptions;
+namespace Prosperoking\LaravelQuickSMS\Exceptions;
 
 class DefaultException extends \Exception
 {

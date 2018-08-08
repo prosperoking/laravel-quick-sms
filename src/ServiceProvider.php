@@ -1,9 +1,8 @@
 <?php
 
-namespace Prosperoking\QuickSMS;
+namespace Prosperoking\LaravelQuickSMS;
 
 use Illuminate\Support\ServiceProvider;
-use Prosperoking\QuickSMS;
 
 class QuickSMSServiceProvider extends ServiceProvider
 {

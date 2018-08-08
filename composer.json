@@ -15,17 +15,17 @@
     ],
     "autoload": {
         "psr-4": {
-            "Prosperoking\\QuickSms\\":"src"
+            "Prosperoking\\LaravelQuickSms\\":"src"
         }
     },
     "minimum-stability": "stable",
     "extra": {
         "laravel": {
             "providers": [
-                "Proseperoking\\QuickSMS\\ServiceProvider"
+                "Prosperoking\\LaravelQuickSms\\ServiceProvider"
             ],
             "aliases": {
-                "QuickSMS": "Proseperoking\\QuickSMS\\Facade"
+                "QuickSMS": "Prosperoking\\QuickSMS\\Facades\\Facade"
             }
         }
     }

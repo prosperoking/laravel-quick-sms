@@ -1,39 +1,56 @@
 <?php
 
-namespace Prosperoking\QuickSMS\Drivers;
+namespace Prosperoking\LaravelQuickSMS\Drivers;
 
 use GuzzleHttp\Exception\ConnectException;
 use GuzzleHttp\Exception\RequestException;
-use Prosperoking\QuickSMS\Exceptions\DefaultException;
-use Prosperoking\QuickSMS\Traits\CanSendSms;
+use Prosperoking\LaravelQuickSMS\Exceptions\DefaultException;
+use Prosperoking\LaravelQuickSMS\Exceptions\UnknownAction;
+use Prosperoking\LaravelQuickSMS\Traits\CanSendSms;
 
 class SMSLive247 extends BaseDriver
 {
     use CanSendSms;
-    private $baseUrl= "http://www.smslive247.com/http/index.aspx";
-    private $config =[
+    protected $baseUrl= "http://www.smslive247.com/http/index.aspx";
+    protected $config =[
       'owner_email'=>'',
       'subacc'=>'',
       'subacc_pwd'=>''
     ];
-    private $senderId = "";
-    private $httpClient;
-    public function __construct($config)
+
+
+    public function __construct(array $config)
     {
-       $this->config['owner_email'] = $config['owner_email'];
-       $this->config['subacc'] = $config['subacc'];
-       $this->config['subacc_pwd'] = $config['subacc'];
-       $this->httpClient = $this->client();
+        $this->setConfig($config);
     }
 
-    public function sendSms(array $numbers,string $message)
+    /**
+     * <p> Sends a quick message
+     * </p>
+     * @param array $numbers
+     * @param $message
+     * @param null $sender
+     * @return array|mixed
+     * @throws \GuzzleHttp\Exception\GuzzleException
+     */
+    public function sendSms(array $numbers,$message,$sender=null)
     {
 
         try{
+            $sender = $sender?$sender:$this->senderId;
             $phones = implode(',',$numbers);
-            $response = $this->httpClient->request('GET',[
-                ''
+            $options = array_merge($this->getDefaultParams(),[
+                'cmd'=>'sendquickmsg',
+                'message'=>$message,
+                'sendto'=>$phones,
+                'sender'=>$sender,
+                'msgType'=>0
             ]);
+            $response = $this->httpClient->request('GET',$options);
+
+            $data = $response->getBody()->getContents();
+
+            return $this->generateResult($data);
 
         }catch (ConnectException $connectException)
         {
@@ -60,6 +77,9 @@ class SMSLive247 extends BaseDriver
         return null;
     }
 
+    /**
+     * @return array
+     */
     private function getDefaultParams(){
         return [
           'ownerEmail'=>$this->config['owner_email'],
@@ -68,4 +88,42 @@ class SMSLive247 extends BaseDriver
         ];
     }
 
+    /**
+     * Sets configuration options of provider
+     * @param array $config
+     */
+    public function setConfig(array $config)
+    {
+        $this->config['owner_email'] = $config['owner_email'];
+        $this->config['subacc'] = $config['subacc'];
+        $this->config['subacc_pwd'] = $config['subacc'];
+        $this->senderId = $config['senderId'];
+        $this->httpClient = $this->client();
+    }
+
+
+    public function generateResult($content)
+    {
+        $info = explode($content);
+
+        if($info[0] === 'OK')
+        {
+            return [
+                'status'=>true,
+                'message_id'=>trim($info[1])
+            ];
+        }
+
+        if($info[1]==='ERR')
+        {
+            return [
+                'status'=>false,
+                'err_number'=>trim($info[1]),
+                'err_description'=>trim($info[2]),
+                'message'=>trim($info[2])
+            ];
+        }
+
+        throw new UnknownAction('Unable to determine operation: '.$content);
+    }
 }

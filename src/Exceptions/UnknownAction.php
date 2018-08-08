@@ -6,7 +6,7 @@
  * Time: 3:08 PM
  */
 
-namespace Prosperoking\QuickSMS\Exceptions;
+namespace Prosperoking\LaravelQuickSMS\Exceptions;
 
 
 class UnknownAction extends DefaultException

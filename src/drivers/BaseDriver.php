@@ -6,11 +6,27 @@
  * Time: 12:58 PM
  */
 
-namespace Prosperoking\QuickSMS\Drivers;
+namespace Prosperoking\LaravelQuickSMS\Drivers;
 
-use Prosperoking\QuickSMS\Interfaces\Driver;
+use GuzzleHttp\Client;
+use Prosperoking\LaravelQuickSMS\Interfaces\Driver;
 
 abstract class BaseDriver implements Driver
 {
-
+    /**
+     * @var string $senderId
+     */
+    protected $senderId = '';
+    /**
+     * @var string $baseUrl
+     */
+    protected $baseUrl;
+    /**
+     * @var array $config
+     */
+    protected $config;
+    /**
+     * @var Client $httpClient
+     */
+    protected $httpClient;
 }
