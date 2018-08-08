@@ -1,7 +1,13 @@
 {
     "name": "prosperoking/laravel-quick-sms",
     "description": "A simple quicksms sender for Laravel",
-    "type": "laravel smslive247",
+    "type": "library",
+    "keywords": [
+        "laravel",
+        "smslive247",
+        "quicksms",
+        "prosperoking"
+    ],
     "require": {
         "illuminate/support": "^5.4",
         "guzzlehttp/guzzle": "^6.3"
