@@ -16,7 +16,7 @@ trait CanSendSms
     {
         return new HTTPClient([
             "base_uri"=>$this->baseUrl,
-            "timeout"=>2.0
+            "timeout"=>2.0,
         ]);
     }
 

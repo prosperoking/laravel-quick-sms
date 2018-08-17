@@ -15,7 +15,8 @@ class QuickSMS {
     public function __construct(array $config)
     {
         $provider = $config['default'];
-        $this->messenger = $this->loadDriver($provider,$config['providers'][$provider]);
+        $setUpConfig = $config['providers'][$provider];
+        $this->messenger = $this->loadDriver($setUpConfig['driver'],$setUpConfig);
     }
 
     /**

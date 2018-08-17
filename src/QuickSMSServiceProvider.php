@@ -6,6 +6,8 @@ use Illuminate\Support\ServiceProvider;
 
 class QuickSMSServiceProvider extends ServiceProvider
 {
+    protected $defer = true;
+
     public function boot()
     {
         $this->publishes([
@@ -16,8 +18,15 @@ class QuickSMSServiceProvider extends ServiceProvider
     public function register()
     {
         $this->mergeConfigFrom(__DIR__ . "/config/QuickSMS.php",'QuickSMS.php');
-        $this->app->singleton(QuickSMSServiceProvider::class,function($app){
-            return new QuickSMSServiceProvider(config('QuickSMS'));
+        $this->app->singleton('quickSms',function($app){
+            $config = $app->make('config');
+            $data = $config->get('QuickSMS');
+            return new QuickSMS($data);
         });
+    }
+
+    public function provides()
+    {
+        return ['quickSms'];
     }
 }

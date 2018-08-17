@@ -2,7 +2,7 @@
     "name": "prosperoking/laravel-quick-sms",
     "description": "A simple quicksms sender for Laravel",
     "type": "library",
-    "version":"0.2.1",
+    "version":"0.2.6",
     "keywords": [
         "laravel",
         "smslive247",
@@ -22,17 +22,17 @@
     ],
     "autoload": {
         "psr-4": {
-            "Prosperoking\\LaravelQuickSms\\":"src"
+            "Prosperoking\\LaravelQuickSMS\\":"src"
         }
     },
     "minimum-stability": "stable",
     "extra": {
         "laravel": {
             "providers": [
-                "Prosperoking\\LaravelQuickSms\\QuickSMSServiceProvider"
+                "Prosperoking\\LaravelQuickSMS\\QuickSMSServiceProvider"
             ],
             "aliases": {
-                "QuickSMS": "Prosperoking\\LaravelQuickSms\\Facades\\QuickSMSFacade"
+                "QuickSms": "Prosperoking\\LaravelQuickSMS\\Facades\\QuickSMSFacade"
             }
         }
     }

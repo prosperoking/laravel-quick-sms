@@ -46,8 +46,7 @@ class SMSLive247 extends BaseDriver
                 'sender'=>$sender,
                 'msgType'=>0
             ]);
-            $response = $this->httpClient->request('GET',$options);
-
+            $response = $this->httpClient->request('POST',null,['form_params'=>$options]);
             $data = $response->getBody()->getContents();
 
             return $this->generateResult($data);
@@ -96,7 +95,7 @@ class SMSLive247 extends BaseDriver
     {
         $this->config['owner_email'] = $config['owner_email'];
         $this->config['subacc'] = $config['subacc'];
-        $this->config['subacc_pwd'] = $config['subacc'];
+        $this->config['subacc_pwd'] = $config['subacc_pwd'];
         $this->senderId = $config['senderId'];
         $this->httpClient = $this->client();
     }
@@ -104,8 +103,7 @@ class SMSLive247 extends BaseDriver
 
     public function generateResult($content)
     {
-        $info = explode($content);
-
+        $info = explode(':',$content);
         if($info[0] === 'OK')
         {
             return [
@@ -114,7 +112,7 @@ class SMSLive247 extends BaseDriver
             ];
         }
 
-        if($info[1]==='ERR')
+        if($info[0]==='ERR')
         {
             return [
                 'status'=>false,

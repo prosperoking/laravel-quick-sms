@@ -8,6 +8,6 @@ class QuickSMSFacade extends Facade {
 
     protected static function getFacadeAccessor()
     {
-        return "quicksms";
+        return "quickSms";
     }
 }
