@@ -88,6 +88,8 @@ class SmsMobile  extends  BaseDriver
         return [
             'option'=>'com_spc',
             'comm'=>'spc_api',
+            'username'=>$this->config['username'],
+            'password'=>$this->config['password'],
         ];
     }
 
