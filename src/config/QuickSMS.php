@@ -28,8 +28,8 @@ return [
         ],
         'smsmobile'=>[
             "driver"=>'smsmobile',
-            'username'=>env('SMS_LIVE_USERNAME',''),
-            'password'=>env('SMS_LIVE_PWD',''),
+            'username'=>env('SMS_MOBILE_USERNAME',''),
+            'password'=>env('SMS_MOBILE_PWD',''),
             "senderId"=>env("SMS_SENDER_ID")
         ]
     ]
