@@ -4,7 +4,7 @@ namespace Prosperoking\LaravelQuickSMS\Traits;
 
 use Prosperoking\LaravelQuickSMS\Drivers\SMSLive247;
 use Prosperoking\LaravelQuickSMS\Exceptions\UnknownDriver;
-use Prosperoking\QuickSMS\Drivers\SmsMobile;
+use Prosperoking\LaravelQuickSMS\Drivers\SmsMobile;
 
 trait HasDriver
 {

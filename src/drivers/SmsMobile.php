@@ -5,8 +5,7 @@
  * Date: 8/23/18
  * Time: 10:09 AM
  */
-
-namespace Prosperoking\QuickSMS\Drivers;
+namespace Prosperoking\LaravelQuickSMS\Drivers;
 
 
 use Prosperoking\LaravelQuickSMS\Traits\CanSendSms;
