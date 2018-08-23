@@ -18,8 +18,8 @@ class SmsMobile  extends  BaseDriver
       'username'=>'',
       'password'=>''
     ];
-    private $senderId = "";
-    private $httpClient;
+    protected $senderId = "";
+    protected $httpClient;
     public function __construct(array $config)
     {
         $this->setConfig($config);
