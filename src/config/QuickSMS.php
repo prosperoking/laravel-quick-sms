@@ -16,7 +16,7 @@ return [
             "owner_email"=>env("SMS_LIVE_OWNER_EMAIL"),
             "subacc"=>env("SMS_LIVE_SUBACC"),
             "subacc_pwd"=>env("SMS_LIVE_SUBACC_PWD"),
-            "senderId"=>env("SMS_LIVE_SENDER_ID")
+            "senderId"=>env("SMS_SENDER_ID")
 
         ],
         "smslive"=>[
@@ -24,7 +24,12 @@ return [
             "owner_email"=>env("SMS_LIVE_OWNER_EMAIL",""),
             "subacc"=>env("SMS_LIVE_OWNER_SUBACC",""),
             "subacc_pwd"=>env("SMS_LIVE_OWNER_SUBACC_PWD",""),
-            "senderId"=>env("SMS_LIVE_SENDER_ID")
+            "senderId"=>env("SMS_SENDER_ID")
+        ],
+        'smsmobile'=>[
+            'username'=>env('SMS_LIVE_USERNAME',''),
+            'password'=>env('SMS_LIVE_PWD',''),
+            "senderId"=>env("SMS_SENDER_ID")
         ]
     ]
 ];
