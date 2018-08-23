@@ -48,7 +48,7 @@ class SmsMobile  extends  BaseDriver
                 'recipient'=>$phones,
                 'sender'=>$sender,
             ]);
-            $response = $this->httpClient->request('POST',null,['form_params'=>$options]);
+            $response = $this->httpClient->request('GET',null,['query'=>$options]);
             $data = $response->getBody()->getContents();
 
             return $this->generateResult($data);
