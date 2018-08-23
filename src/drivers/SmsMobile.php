@@ -14,7 +14,7 @@ class SmsMobile  extends  BaseDriver
 {
     use CanSendSms;
     protected $baseUrl= "http://www.smsmobile24.com/index.php";
-    protected $confif = [
+    protected $config = [
       'username'=>'',
       'password'=>''
     ];
