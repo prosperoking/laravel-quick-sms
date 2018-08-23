@@ -7,7 +7,10 @@
  */
 namespace Prosperoking\LaravelQuickSMS\Drivers;
 
-
+use GuzzleHttp\Exception\ConnectException;
+use GuzzleHttp\Exception\RequestException;
+use Prosperoking\LaravelQuickSMS\Exceptions\DefaultException;
+use Prosperoking\LaravelQuickSMS\Exceptions\UnknownAction;
 use Prosperoking\LaravelQuickSMS\Traits\CanSendSms;
 
 class SmsMobile  extends  BaseDriver
