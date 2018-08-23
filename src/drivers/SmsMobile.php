@@ -13,8 +13,11 @@ use Prosperoking\LaravelQuickSMS\Traits\CanSendSms;
 class SmsMobile  extends  BaseDriver
 {
     use CanSendSms;
-    private $baseUrl= "http://www.smsmobile24.com/index.php";
-
+    protected $baseUrl= "http://www.smsmobile24.com/index.php";
+    protected $confif = [
+      'username'=>'',
+      'password'=>''
+    ];
     private $senderId = "";
     private $httpClient;
     public function __construct(array $config)

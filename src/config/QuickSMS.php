@@ -27,6 +27,7 @@ return [
             "senderId"=>env("SMS_SENDER_ID")
         ],
         'smsmobile'=>[
+            "driver"=>'smsmobile',
             'username'=>env('SMS_LIVE_USERNAME',''),
             'password'=>env('SMS_LIVE_PWD',''),
             "senderId"=>env("SMS_SENDER_ID")
